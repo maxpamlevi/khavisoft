@@ -2,6 +2,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ThreeBackground from './components/ThreeBackground';
 import ServiceCard from './components/ServiceCard';
+import ContactSection from './components/ContactSection';
 import { Database, Monitor, ChevronRight } from 'lucide-react';
 
 export default function Home() {
@@ -104,6 +105,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <ContactSection />
 
       <Footer />
     </main>
