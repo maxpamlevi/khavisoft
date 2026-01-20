@@ -15,14 +15,16 @@ export async function submitConsultation(prevState: any, formData: FormData) {
   }
 
   const message = `
-🔔 **Yêu cầu tư vấn mới erp**
+🔔 **Yêu cầu tư vấn mới**
+
 👤 **Tên:** ${name}
 📧 **Email:** ${email}
 📞 **SĐT:** ${phone}
-📝 **Chi tiết:** ${details || 'Không có chi tiết'}`
+📝 **Chi tiết:** ${details || 'Không có chi tiết'}
+  `
 
-  const token = '7288669034:AAHyptqP9ipmHNTxVRDZIhfXQWNjCqXX81w'
-  const chatId = '1739177113'
+  const token = process.env.TELEGRAM_BOT_TOKEN
+  const chatId = process.env.TELEGRAM_CHAT_ID
 
   if (!token || !chatId) {
     console.error('Telegram env vars missing')
