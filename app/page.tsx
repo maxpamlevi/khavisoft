@@ -4,6 +4,7 @@ import ThreeBackground from './components/ThreeBackground';
 import ServiceCard from './components/ServiceCard';
 import ContactSection from './components/ContactSection';
 import { Database, Monitor, ChevronRight } from 'lucide-react';
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -28,9 +29,9 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <button className="px-8 py-4 rounded-full bg-primary hover:bg-secondary text-white font-semibold transition-all shadow-lg shadow-primary/25 hover:shadow-secondary/25">
-                Bắt đầu ngay
-              </button>
+              <Link className="px-8 py-4 rounded-full bg-primary hover:bg-secondary text-white font-semibold transition-all shadow-lg shadow-primary/25 hover:shadow-secondary/25" href={"https://demo.khavi.io.vn/"}>
+                Bắt đầu dùng thử miễn phí
+              </Link>
               <button className="px-8 py-4 rounded-full bg-white border border-gray-200 text-gray-900 font-semibold transition-all flex items-center justify-center group hover:bg-gray-50 hover:border-gray-300 shadow-sm">
                 Xem hồ sơ năng lực
                 <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
