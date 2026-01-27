@@ -1,0 +1,31 @@
+name: Deploy momentum-client
+
+on:
+  workflow_dispatch:  # 👈 Cho phép chạy thủ công
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy via SSH
+        run: |
+          ssh -o StrictHostKeyChecking=no root@103.110.85.86 << 'EOF'
+            cd /root/khavisoft
+            git pull origin main
+            rm -rf node_modules package-lock.json && npm cache clean --force && npm i
+            rm -rf .next/cache .next/image-cache
+            rm -rf lib/generated
+            npx prisma generate
+            npx prisma migrate deploy
+            npm run build
+            pm2 restart khavisoft || pm2 start npm --name "khavisoft" -- start
+          EOF
